@@ -1,12 +1,15 @@
-import { useState } from "react"
+import React, { useState } from 'react'
 
-export default function LoginPage() {
+export default function LoginForm() {
+
     // state (état, données)
     const [prenom, setPrenom] = useState("")
 
     // comportements
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault()
         alert(`Bonjour ${prenom}`)
+        setPrenom("")
     }
 
     const handleChange = (event) => {
@@ -16,10 +19,10 @@ export default function LoginPage() {
     // affichage (render)
     return (
         <div>
-            <h1>Bienvenue chez nous !</h1>
-            <br />
-            <h3>Connectez-vous</h3>
             <form action="submit" onSubmit={handleSubmit}>
+                <h1>Bienvenue chez nous !</h1>
+                <br />
+                <h3>Connectez-vous</h3>
                 <input
                     value={prenom}
                     type="text"
