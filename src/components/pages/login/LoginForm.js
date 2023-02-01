@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
-import {BsPersonCircle} from "react-icons/bs";
-import {IoChevronForward} from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 
 export default function LoginForm() {
 
@@ -23,32 +23,31 @@ export default function LoginForm() {
 
     // affichage (render)
     return (
-        <LoginFormStyled>
-            <form action="submit" onSubmit={handleSubmit}>
+        <LoginFormStyled action="submit" onSubmit={handleSubmit}>
+            <div >
                 <h1>Bienvenue chez nous !</h1>
                 <hr />
                 <h2>Connectez-vous</h2>
-                <div className='input-with-icon'>
-                    <BsPersonCircle className='icon' />
-                    <input
-                        value={prenom}
-                        type="text"
-                        placeholder="Entrez votre prénom"
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button className='button-with-icon'>
-                    <span>Accéder à mon espace</span>
-                    <IoChevronForward className='icon'/>
-                </button>
-            </form>
+            </div>
+            <div className='input-with-icon'>
+                <BsPersonCircle className='icon' />
+                <input
+                    value={prenom}
+                    type="text"
+                    placeholder="Entrez votre prénom"
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            <button className='button-with-icon'>
+                <span>Accéder à mon espace</span>
+                <IoChevronForward className='icon' />
+            </button>
         </LoginFormStyled>
     )
 }
 
-const LoginFormStyled = styled.div`
-  background: green;
+const LoginFormStyled = styled.form`
   text-align: center;
   max-width: 500px;
   max-width: 400px;
