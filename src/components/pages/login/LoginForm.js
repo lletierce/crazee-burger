@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components';
 
 export default function LoginForm() {
 
@@ -20,7 +21,7 @@ export default function LoginForm() {
 
     // affichage (render)
     return (
-        <div>
+        <LoginFormStyled>
             <form action="submit" onSubmit={handleSubmit}>
                 <h1>Bienvenue chez nous!</h1>
                 <br />
@@ -34,6 +35,10 @@ export default function LoginForm() {
                 />
                 <button>Accédez à votre espace</button>
             </form>
-        </div>
+        </LoginFormStyled>
     )
 }
+
+const LoginFormStyled = styled.div`
+  background: green;
+`;
