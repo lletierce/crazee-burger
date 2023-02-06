@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../theme';
 
 export default function Logo() {
   return (
@@ -19,10 +20,10 @@ const LogoStyled = styled.div`
   h1{
     display: inline;
     text-align: center;
-    color: #ffa01b;
-    font-size: 36px;
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.P4};
     line-height: 1em;
-    font-weight: 700;
+    font-weight: ${theme.fonts.weights.bold};
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-family: "Amatic SC", cursive;
@@ -34,6 +35,6 @@ const LogoStyled = styled.div`
     object-position: center;
     height: 60px;
     width: 80px;
-    margin: 0 5px;
+    margin: 0 ${theme.gridUnit /2}px;
   }
 `;

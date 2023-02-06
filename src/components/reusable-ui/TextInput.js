@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../theme';
 
 export default function Input({ value, onChange, Icon, ...otherProps }) {
   return (
@@ -16,27 +17,28 @@ export default function Input({ value, onChange, Icon, ...otherProps }) {
 
 const LogoStyled = styled.div`
     
-    background-color: white;
-    border-radius: 5px;
+    background-color: ${theme.colors.background_white};
+    border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
     padding: 18px 24px;
     margin: 18px 0;
     
     .icon{
-        font-size: 15px;
-        margin-right: 8px;
-        color: gray;
+        font-size: ${theme.fonts.size.P0};
+        margin-right: ${theme.spacing.xs};
+        color: ${theme.colors.greySemiDark};
     }
 
     input{
         border: none;
-        font-size: 15px;
-        color: black;
-    }
+        font-size: ${theme.fonts.size.P0};
+        color: ${theme.colors.dark};
 
     &::placeholder{
-        background: white;
-        color: lightgray;
+        background: ${theme.colors.white};
+        color: ${theme.colors.greyMedium};
     }
+  }
+
 `;
