@@ -12,10 +12,16 @@ export default function OrderPage() {
     return (
         <OrderPageStyled>
             <div className="container">
-                <h1>Bonjour {username}</h1>
-                <Link to="/">
-                    <button>Déconnexion</button>
-                </Link>
+                <div className="navbar">
+                    navbar
+                    <h1>Bonjour {username}</h1>
+                    <Link to="/">
+                        <button>Déconnexion</button>
+                    </Link>
+                </div>
+                <div className="main">
+                    main
+                </div>
             </div>
         </OrderPageStyled>
     )
@@ -31,6 +37,18 @@ const OrderPageStyled = styled.div`
     .container{
         background: red;
         width: 1400px;
-        height: 90vh;
+        height: 95vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar{
+        background: blue;
+        height: 10vh;
+    }
+
+    .main{
+        background: green;
+        flex: 1; // or height: calc(95vh - 10vh);
     }
 `;
