@@ -24,7 +24,8 @@ const MainStyled = styled.div`
         // this code will be use for Basket
         /* grid-template-columns: 25% 1fr; // or 25% 75% or 25% 50% */
 
-
+        overflow-y: scroll;
+        
         /* .basket{
           background: pink;
         } */
