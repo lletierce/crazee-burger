@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../context/OrderContext";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
@@ -7,18 +8,25 @@ import Navbar from "./Navbar/Navbar";
 export default function OrderPage() {
 
     // state (état, données)
-    const { username } = useParams()
+    const [isModeAdmin, setIsModeAdmin] = useState(true)
 
     // comportements
 
+    const orderContextValue = {
+        isModeAdmin,
+        setIsModeAdmin
+    }
+
     // affichage (render)
     return (
-        <OrderPageStyled>
-            <div className="container">
-                <Navbar username={username} />
-                <Main />
-            </div>
-        </OrderPageStyled>
+        <OrderContext.Provider value={orderContextValue}>
+            <OrderPageStyled>
+                <div className="container">
+                    <Navbar />
+                    <Main />
+                </div>
+            </OrderPageStyled>
+        </OrderContext.Provider>
     )
 }
 
