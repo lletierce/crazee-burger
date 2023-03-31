@@ -1,44 +1,41 @@
-import styled from 'styled-components';
-import { theme } from '../../theme';
+import styled from "styled-components"
+import { theme } from "../../theme"
 
-export default function Input({ value, onChange, Icon, ...otherProps }) {
+export default function TextInput({ value, onChange, Icon, ...extraProps }) {
   return (
-    <LogoStyled>
+    <InputStyled>
       {Icon && Icon}
-      <input
-        value={value}
-        onChange={onChange}
-        type="text"
-        {...otherProps}
-      />
-    </LogoStyled>
+      <input onChange={onChange} type="text" {...extraProps} />
+    </InputStyled>
   )
 }
 
-const LogoStyled = styled.div`
-    
-    background-color: ${theme.colors.background_white};
-    border-radius: ${theme.borderRadius.round};
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
-    
-    .icon{
-        font-size: ${theme.fonts.size.P0};
-        margin-right: ${theme.spacing.xs};
-        color: ${theme.colors.greySemiDark};
-    }
+const InputStyled = styled.div`
+  background-color: #fff;
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  margin: 18px 0; // could be handle in Parent too
+  /* white-space: nowrap; */
 
-    input{
-        border: none;
-        font-size: ${theme.fonts.size.P0};
-        color: ${theme.colors.dark};
-
-    &::placeholder{
-        background: ${theme.colors.white};
-        color: ${theme.colors.greyMedium};
-    }
+  .icon {
+    font-size: ${theme.fonts.size.SM};
+    margin-right: 8px;
+    color: ${theme.colors.greySemiDark};
+    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
   }
 
-`;
+  input {
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    color: ${theme.colors.dark};
+    width: 100%;
+    /* display: flex; */
+
+    &::placeholder {
+      background: ${theme.colors.white};
+      color: ${theme.colors.greyMedium};
+    }
+  }
+`
