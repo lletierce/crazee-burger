@@ -1,19 +1,18 @@
-import { Route, Routes } from "react-router-dom"
-import ErrorPage from "./components/pages/error/ErrorPage"
+import logo from "./logo.svg"
+import "./App.css"
 import LoginPage from "./components/pages/login/LoginPage"
+import { Route, Routes } from "react-router-dom"
 import OrderPage from "./components/pages/order/OrderPage"
+import ErrorPage from "./components/pages/error/ErrorPage"
 
 function App() {
-  // state (état, données)
-  // comportements
-  // affichage (render)
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="order/:username" element={<OrderPage />} />
+      <Route path="/order/:username" element={<OrderPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
-    ) 
+  )
 }
 
 export default App

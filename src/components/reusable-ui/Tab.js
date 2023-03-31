@@ -1,11 +1,12 @@
-import styled from 'styled-components';
-import { theme } from '../../theme'
+import React from "react"
+import styled from "styled-components"
+import { theme } from "../../theme"
 
-export default function Tab( { label, Icon, onClick, className }) {
+export default function Tab({ label, Icon, onClick, className }) {
   return (
     <TabStyled onClick={onClick} className={className}>
-        <div className='icon'>{Icon}</div>
-        {label && <span className='label'>{label}</span>}
+      <div className="icon">{Icon}</div>
+      {label && <span className="label">{label}</span>}
     </TabStyled>
   )
 }
@@ -17,11 +18,10 @@ const TabStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   cursor: pointer;
 
   position: relative;
-  left: 5%;
   top: 1px;
 
   // fonts
@@ -30,7 +30,7 @@ const TabStyled = styled.button`
 
   background: ${theme.colors.white};
   box-shadow: ${theme.shadows.subtle};
-  
+
   // border
   border-width: 1px 1px 2px 1px;
   border-style: solid;
@@ -38,18 +38,19 @@ const TabStyled = styled.button`
 
   // border-radius
   border-radius: ${theme.borderRadius.round};
-  border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 
-  :hover{
+  :hover {
     border-bottom: 2px solid ${theme.colors.white};
+    text-decoration: underline;
   }
 
-  .icon{
+  .icon {
     display: flex;
   }
 
-  .label{
+  .label {
     margin-left: 13px;
   }
-`;
+`
