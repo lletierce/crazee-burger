@@ -4,9 +4,9 @@ import { useContext, useState } from "react";
 
 const EMPTY_PRODUCT = {
   id: "",
-  title: "Nouveau produit",
+  title: "",
   imageSource: "",
-  price: 14,
+  price: 0,
 };
 
 export default function AddForm() {
