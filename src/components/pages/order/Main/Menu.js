@@ -9,7 +9,7 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
   // state
-  const {menu} = useContext(OrderContext)
+  const {menu, isModeAdmin} = useContext(OrderContext)
 
   // comportements
   
@@ -24,6 +24,7 @@ export default function Menu() {
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
+            hasDeleteButton={isModeAdmin}
           />
         )
       })}
