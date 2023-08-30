@@ -8,14 +8,23 @@ import OrderContext from "../../../../context/OrderContext"
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
+  const {menu, isModeAdmin, handleDelete, resetMenu} = useContext(OrderContext)
   // state
-  const {menu, isModeAdmin, handleDelete} = useContext(OrderContext)
 
   // comportements
   
 
   // affichage
-  return (
+  if (menu.length === 0)
+    return(
+      <div>
+        <span>Pas de produit</span>
+        <button onClick={resetMenu}>Reset menu</button>
+      </div>
+    )
+  
+  
+    return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
         return (
