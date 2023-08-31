@@ -40,7 +40,7 @@ export default function LoginForm() {
           required
           Icon={<BsPersonCircle />}
           className="input-login"
-          version="yololololo"
+          version="normal"
         />
 
         <PrimaryButton
