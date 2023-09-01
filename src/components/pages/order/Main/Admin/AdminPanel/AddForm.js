@@ -8,6 +8,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import { theme } from "../../../../../../theme";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
+import ImagePreview from "../../MainRightSide/Admin/ImagePreview";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -51,13 +52,7 @@ export default function AddForm() {
   // affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt={newProduct.title} />
-        ) : (
-          <div className="empty-image">Aucune image</div>
-        )}
-      </div>
+      <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}  />
       <div className="input-fields">
         <TextInput
           name="title"
@@ -110,33 +105,6 @@ const AddFormStyled = styled.form`
   height: 100%;
   width: 70%;
 
-  .image-preview {
-    /* background: red; */
-    grid-area: 1 / 1 / 4 / 2;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .empty-image {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid ${theme.colors.greyLight};
-      line-height: 1.5;
-      color: ${theme.colors.greySemiDark};
-      border-radius: ${theme.borderRadius.round};
-    }
-  }
 
   .input-fields {
     /* background: blue; */
