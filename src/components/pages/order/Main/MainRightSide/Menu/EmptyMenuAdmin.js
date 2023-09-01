@@ -1,29 +1,25 @@
-import styled from "styled-components";
-import Button from "../../../../../reusable-ui/Button";
-import { theme } from "../../../../../../theme";
+import styled from "styled-components"
+import { theme } from "../../../../../../theme"
+import Button from "../../../../../reusable-ui/Button"
 
 export default function EmptyMenuAdmin({ onReset }) {
   return (
-    <EmptyMenuAdminStyled>
+    <EmptyMenuStyled>
       <span className="title">Le menu est vide ?</span>
-      <span className="description">
-        Cliquez ci-dessous pour le réinitialiser
-      </span>
-      <Button label={"Générer de nouveaux produits"} onClick={onReset}>
-        Reset menu
-      </Button>
-    </EmptyMenuAdminStyled>
-  );
+      <span className="description">Cliquez ci-dessous pour le réinitialiser</span>
+      <Button label={"Générer de nouveaux produits"} onClick={onReset} />
+    </EmptyMenuStyled>
+  )
 }
 
-const EmptyMenuAdminStyled = styled.div`
+const EmptyMenuStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.strong};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; // permet de diminuer la largeur du bouton resetMenu
 
   .title,
   .description {
@@ -47,4 +43,4 @@ const EmptyMenuAdminStyled = styled.div`
     font-size: ${theme.fonts.size.XS};
     width: auto;
   }
-`;
+`

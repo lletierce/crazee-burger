@@ -6,9 +6,12 @@ import { TiDelete } from "react-icons/ti"
 export default function Card({ title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
   return (
     <CardStyled className="produit">
-      {hasDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
-        <TiDelete className="icon"/>
-      </button>}
+      {hasDeleteButton && (
+        <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+          <TiDelete className="icon" />
+        </button>
+      )}
+
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -33,7 +36,7 @@ const CardStyled = styled.div`
   grid-template-rows: 65% 1fr;
   padding: 20px;
   padding-bottom: 10px;
-  box-shadow: ${theme.shadows.medium};
+  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
 
@@ -52,14 +55,15 @@ const CardStyled = styled.div`
     background: none;
 
     .icon {
+      /* border: 1px solid blue; */
       height: 100%;
       width: 100%;
     }
 
     :hover {
       color: ${theme.colors.red};
+      /* background-color: red; */
     }
-
     :active {
       color: ${theme.colors.primary};
     }
