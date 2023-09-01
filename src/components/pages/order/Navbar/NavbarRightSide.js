@@ -6,7 +6,7 @@ import ToastAdmin from "./ToastAdmin"
 import { toast } from "react-toastify"
 import OrderContext from "../../../../context/OrderContext"
 
-export default function NavbarRightSide({ username }) {
+export default function NavbarRightSide() {
   const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
 
   const displayToastNotification = () => {
@@ -34,7 +34,7 @@ export default function NavbarRightSide({ username }) {
         labelIfChecked="DÉSACTIVER LE MODE ADMIN"
         onToggle={displayToastNotification}
       />
-      <Profile username={username} />
+      <Profile />
       <ToastAdmin />
     </NavbarRightSideStyled>
   )
