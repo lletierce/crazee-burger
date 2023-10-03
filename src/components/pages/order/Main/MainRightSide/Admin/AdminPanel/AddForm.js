@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import OrderContext from "../../../../../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
 import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage"
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths"
 import Form from "./Form"
 import SubmitButton from "./SubmitButton"
 
@@ -16,8 +17,8 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
+      price: replaceFrenchCommaWithDot(newProduct.price),
     }
-
     handleAdd(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
 
