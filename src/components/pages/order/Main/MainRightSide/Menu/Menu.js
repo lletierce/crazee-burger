@@ -7,9 +7,8 @@ import Card from "../../../../../reusable-ui/Card"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product"
-
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
+import { find } from "../../../../../../utils/array"
 
 export default function Menu() {
   const {
@@ -22,6 +21,8 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
   } = useContext(OrderContext)
   // state
 
@@ -31,7 +32,8 @@ export default function Menu() {
 
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    //const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    const productClickedOn = find(idProductClicked, menu)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -45,8 +47,16 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     handleDelete(idProductToDelete)
+    handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
     titleEditRef.current.focus()
+  }
+
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation()
+    //const productToAdd = menu.find((menuProduct) => menuProduct.id === idProductToAdd)
+    const productToAdd = find(idProductToAdd, menu)
+    handleAddToBasket(productToAdd)
   }
 
   return (
@@ -56,13 +66,14 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            onAdd={(event) => handleAddButton(event, id)}
           />
         )
       })}
