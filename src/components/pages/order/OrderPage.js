@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import Main from "./Main/Main"
@@ -8,17 +8,20 @@ import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
+import { useParams } from "react-router-dom"
+import { initialiseUserSession } from "./helpers/initialiseUserSession"
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+  const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+  const { username } = useParams()
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu)
@@ -28,7 +31,12 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
+  useEffect(() => {
+    initialiseUserSession(username, setMenu, setBasket)
+  }, [])
+
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -51,7 +59,7 @@ export default function OrderPage() {
     handleProductSelected,
   }
 
-  //affichage
+  //affichage (render)
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
