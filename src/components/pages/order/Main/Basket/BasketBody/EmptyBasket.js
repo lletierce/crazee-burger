@@ -1,16 +1,19 @@
 import React from "react"
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../../theme"
+import { BASKET_MESSAGE } from "../../../../../../enums/product"
 
-export default function BasketBody() {
+export default function EmptyBasket({ isLoading }) {
   return (
-    <BasketBodyStyled>
-      <span className="empty-message">Votre commande est vide.</span>
-    </BasketBodyStyled>
+    <EmptyBasketStyled>
+      <span className="empty-message">
+        {isLoading ? BASKET_MESSAGE.LOADING : BASKET_MESSAGE.EMPTY}
+      </span>
+    </EmptyBasketStyled>
   )
 }
 
-const BasketBodyStyled = styled.div`
+const EmptyBasketStyled = styled.div`
   flex: 1;
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};
