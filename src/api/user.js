@@ -18,24 +18,28 @@ export const getUser = async (idUser) => {
 // 2e cas : résultat positif de la promesse achevée => résultat positif (fulfilled)
 // 3e cas : résultat négatif de la promesse achevée => résultat négatif (rejected)
 
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
   // CACHETTE
   const docRef = doc(db, "users", userId)
 
   // NOURRITURE
-  const nourriture = {
+  const newUserToCreate = {
     username: userId,
     menu: fakeMenu.SMALL,
   }
 
   //setDoc(CACHETTE, NOURRITURE)
-  setDoc(docRef, nourriture)
+  await setDoc(docRef, newUserToCreate)
+
+  return newUserToCreate
 }
 
 export const authenticateUser = async (userId) => {
   const existingUser = await getUser(userId)
 
   if (!existingUser) {
-    createUser(userId)
+    return await createUser(userId)
   }
+
+  return existingUser
 }
