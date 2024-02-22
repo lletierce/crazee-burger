@@ -13,7 +13,7 @@ import { initialiseUserSession } from "./helpers/initialiseUserSession"
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
