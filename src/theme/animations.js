@@ -1,6 +1,16 @@
 import { css, keyframes } from "styled-components"
 import { theme } from "."
 
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+`
+
 export const fadeInFromRight = keyframes`
   0% {
     position: absolute;
