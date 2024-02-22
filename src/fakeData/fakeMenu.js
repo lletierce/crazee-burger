@@ -8,7 +8,7 @@ const SMALL = [
     price: 5.297,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "2",
@@ -16,8 +16,8 @@ const SMALL = [
     title: "Burger 2",
     price: 7.556,
     quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
+    isAvailable: false,
+    isPublicised: true,
   },
 ]
 
@@ -29,7 +29,7 @@ const MEDIUM = [
     price: 5.598,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "2",
@@ -38,7 +38,7 @@ const MEDIUM = [
     price: 5.4985,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "3",
@@ -47,7 +47,7 @@ const MEDIUM = [
     price: 5.367,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "4",
@@ -56,7 +56,7 @@ const MEDIUM = [
     price: 3.568,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "5",
@@ -65,7 +65,7 @@ const MEDIUM = [
     price: 3.487,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
 ]
 
@@ -77,7 +77,7 @@ const LARGE = [
     price: 5.598,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "2",
@@ -86,7 +86,7 @@ const LARGE = [
     price: 5.4985,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "3",
@@ -95,7 +95,7 @@ const LARGE = [
     price: 5.367,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "4",
@@ -104,7 +104,7 @@ const LARGE = [
     price: 3.568,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "5",
@@ -113,7 +113,7 @@ const LARGE = [
     price: 3.487,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "6",
@@ -122,7 +122,7 @@ const LARGE = [
     price: 3.356,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "7",
@@ -131,7 +131,7 @@ const LARGE = [
     price: 2.567,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "8",
@@ -140,7 +140,7 @@ const LARGE = [
     price: 3.1678,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "9",
@@ -149,7 +149,7 @@ const LARGE = [
     price: 3.7,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
   {
     id: "10",
@@ -158,7 +158,7 @@ const LARGE = [
     price: 4.678,
     quantity: 0,
     isAvailable: true,
-    isAdvertised: false,
+    isPublicised: false,
   },
 ]
 
