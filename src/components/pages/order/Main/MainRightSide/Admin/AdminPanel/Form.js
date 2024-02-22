@@ -1,47 +1,54 @@
-import React from "react"
-import styled from "styled-components"
-import TextInput from "../../../../../../reusable-ui/TextInput"
-import ImagePreview from "./ImagePreview"
-import { getInputTextsConfig } from "./inputTextConfig"
+import React from "react";
+import styled from "styled-components";
+import TextInput from "../../../../../../reusable-ui/TextInput";
+import ImagePreview from "./ImagePreview";
+import { getInputTextsConfig } from "./inputTextConfig";
+import SelectInput from "../../../../../../reusable-ui/SelectInput";
 
-const Form = React.forwardRef(({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
-  // state (vide)
+const isAvailableOptions = [
+  { value: true, label: "En stock" },
+  { value: false, label: "En rupture" },
+];
 
-  // comportements (vide)
+const isPublicisedOptions = [
+  { value: true, label: "Sans pub" },
+  { value: false, label: "Avec pub" },
+];
 
-  const inputTexts = getInputTextsConfig(product)
+const Form = React.forwardRef(
+  ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
+    // state (vide)
 
-  // affichage
-  return (
-    <FormStyled onSubmit={onSubmit}>
-      <ImagePreview imageSource={product.imageSource} title={product.title} />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={onChange}
-            version="minimalist"
-            onFocus={onFocus}
-            onBlur={onBlur}
-            ref={ref && input.name === "title" ? ref : null}
-          />
-        ))}
-        <select name="isAvailbe" className="is-avaible" id="3">
-          <option value={true}>En stock</option>
-          <option value={false}>En rupture</option>
-        </select>
-        <select name="isPublicised" className="is-publicised" id="4">
-          <option value={true}>Sans pub</option>
-          <option value={false}>Avec pub</option>
-        </select>
-      </div>
-      <div className="form-footer">{children}</div>
-    </FormStyled>
-  )
-})
+    // comportements (vide)
 
-export default Form
+    const inputTexts = getInputTextsConfig(product);
+
+    // affichage
+    return (
+      <FormStyled onSubmit={onSubmit}>
+        <ImagePreview imageSource={product.imageSource} title={product.title} />
+        <div className="input-fields">
+          {inputTexts.map((input) => (
+            <TextInput
+              {...input}
+              key={input.id}
+              onChange={onChange}
+              version="minimalist"
+              onFocus={onFocus}
+              onBlur={onBlur}
+              ref={ref && input.name === "title" ? ref : null}
+            />
+          ))}
+          <SelectInput  name={isAvailableOptions} options={isAvailableOptions} className="is-available" id="3" />
+          <SelectInput name={isPublicisedOptions} options={isPublicisedOptions} className="is-publicised" id="4" />
+        </div>
+        <div className="form-footer">{children}</div>
+      </FormStyled>
+    );
+  }
+);
+
+export default Form;
 
 const FormStyled = styled.form`
   /* border: 2px solid black; */
@@ -63,21 +70,21 @@ const FormStyled = styled.form`
     grid-row-gap: 8px;
     grid-column-gap: 8px;
 
-    .title{
+    .title {
       grid-area: 1 / 1 / 2 / 4;
     }
-    .image-source{
+    .image-source {
       grid-area: 2 / 1 / 3 / 4;
     }
-    .price{
+    .price {
       background: red;
       grid-area: 3 / 1 / 4 / 2;
     }
-    .is-avaible{
+    .is-available {
       background: pink;
     }
-    .is-publicised{
-      background : yellow;
+    .is-publicised {
+      background: yellow;
     }
   }
 
@@ -89,4 +96,4 @@ const FormStyled = styled.form`
     position: relative;
     top: 3px;
   }
-`
+`;
