@@ -75,14 +75,7 @@ const FormStyled = styled.form`
       grid-area: 2 / 1 / 3 / 4;
     }
     .price {
-      background: red;
       grid-area: 3 / 1 / 4 / 2;
-    }
-    .is-available {
-      background: pink;
-    }
-    .is-publicised {
-      background: yellow;
     }
   }
 
