@@ -4,6 +4,6 @@ export const isAvailableOptions = Object.freeze([
 ]);
 
 export const isPublicisedOptions = Object.freeze([
-  { value: true, label: "Sans pub" },
-  { value: false, label: "Avec pub" },
+  { value: false, label: "Sans pub" },
+  { value: true, label: "Avec pub" },
 ]);
