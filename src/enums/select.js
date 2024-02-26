@@ -1,9 +1,9 @@
 export const isAvailableOptions = Object.freeze([
-  { value: true, label: "En stock" },
-  { value: false, label: "En rupture" },
+  { optionValue: true, label: "En stock" },
+  { optionValue: false, label: "En rupture" },
 ]);
 
 export const isPublicisedOptions = Object.freeze([
-  { value: false, label: "Sans pub" },
-  { value: true, label: "Avec pub" },
+  { optionValue: false, label: "Sans pub" },
+  { optionValue: true, label: "Avec pub" },
 ]);
