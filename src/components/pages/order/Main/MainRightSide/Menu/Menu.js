@@ -7,7 +7,7 @@ import Card from "../../../../../reusable-ui/Card"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
-import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK } from "../../../../../../enums/product"
 import { isEmpty } from "../../../../../../utils/array"
 import Loader from "./Loader"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
@@ -64,6 +64,8 @@ export default function Menu() {
               isHoverable={isModeAdmin}
               isSelected={checkIfProductIsClicked(id, productSelected.id)}
               onAdd={(event) => handleAddButton(event, id)}
+              overlapImageSource={IMAGE_NO_STOCK}
+              isOverlapImageVisible={true}
             />
           </CSSTransition>
         )
