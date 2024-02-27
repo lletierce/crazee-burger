@@ -63,6 +63,7 @@ export default function Card({
                 className="primary-button"
                 label={"Ajouter"}
                 onClick={onAdd}
+                disabled={isOverlapImageVisible}
               />
             </div>
           </div>
