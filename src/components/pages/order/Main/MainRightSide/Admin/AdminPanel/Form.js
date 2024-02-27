@@ -4,6 +4,7 @@ import TextInput from "../../../../../../reusable-ui/TextInput";
 import SelectInput from "../../../../../../reusable-ui/SelectInput";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig, getSelectsInputConfig } from "./inputConfig";
+import { Inputs } from "./Inputs";
 
 const Form = React.forwardRef(
   ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
@@ -11,35 +12,11 @@ const Form = React.forwardRef(
 
     // comportements (vide)
 
-    const inputTexts = getInputTextsConfig(product);
-    const inputSelects = getSelectsInputConfig(product);
-
     // affichage
     return (
       <FormStyled onSubmit={onSubmit}>
         <ImagePreview imageSource={product.imageSource} title={product.title} />
-        <div className="input-fields">
-          {inputTexts.map((input) => (
-            <TextInput
-              {...input}
-              key={input.id}
-              onChange={onChange}
-              version="minimalist"
-              onFocus={onFocus}
-              onBlur={onBlur}
-              ref={ref && input.name === "title" ? ref : null}
-            />
-          ))}
-          {inputSelects.map((inputSelect) => (
-            <SelectInput
-              {...inputSelect}
-              key={inputSelect.id}
-              onChange={onChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
-            />
-          ))}
-        </div>
+        <Inputs product={product} onChange={onChange} onFocus={onFocus} onBlur={onBlur} ref={ref} />
         <div className="form-footer">{children}</div>
       </FormStyled>
     );
@@ -57,27 +34,6 @@ const FormStyled = styled.form`
   width: 70%;
   grid-column-gap: 20px;
   grid-row-gap: 8px;
-
-  .input-fields {
-    /* background: blue; */
-    grid-area: 1 / 2 / -2 / 3;
-
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 8px;
-    grid-column-gap: 8px;
-
-    .title {
-      grid-area: 1 / 1 / 2 / 4;
-    }
-    .image-source {
-      grid-area: 2 / 1 / 3 / 4;
-    }
-    .price {
-      grid-area: 3 / 1 / 4 / 2;
-    }
-  }
 
   .form-footer {
     /* background: green; */
