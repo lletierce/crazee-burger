@@ -2,7 +2,6 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../../theme"
-import { formatPrice } from "../../../../../../utils/maths"
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
 
 export default function BasketCard({
