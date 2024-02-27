@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { getInputTextsConfig, getSelectsInputConfig } from "./inputConfig"
-import TextInput from "../../../../../../reusable-ui/TextInput"
-import SelectInput from "../../../../../../reusable-ui/SelectInput"
+import TextInput from "../../../../../../../reusable-ui/TextInput"
+import SelectInput from "../../../../../../../reusable-ui/SelectInput"
 
 export const Inputs = React.forwardRef(({ product, onChange, onFocus, onBlur }, ref) => {
   const inputTexts = getInputTextsConfig(product)
