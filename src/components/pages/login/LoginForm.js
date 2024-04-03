@@ -50,9 +50,9 @@ export default function LoginForm() {
 const LoginFormStyled = styled.form`
   text-align: center;
   max-width: 500px;
-  min-width: 400px;
+  /* min-width: 400px; */
   margin: 0px auto;
-  padding: 40px ${theme.spacing.lg};
+  /* padding: 40px ${theme.spacing.lg}; */
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
@@ -63,13 +63,16 @@ const LoginFormStyled = styled.form`
 
   h1 {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
+    /* font-size: ${theme.fonts.size.P5}; */
+    font-size: ${theme.fonts.size.P4};
+
   }
 
   h2 {
     margin: 20px 10px 10px;
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P4};
+    /* font-size: ${theme.fonts.size.P4}; */
+    font-size: ${theme.fonts.size.P3};
   }
 
   .input-login {

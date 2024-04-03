@@ -1,39 +1,51 @@
-import styled from "styled-components"
-import Logo from "../../reusable-ui/Logo"
-import LoginForm from "./LoginForm"
+import styled from "styled-components";
+import Logo from "../../reusable-ui/Logo";
+import LoginForm from "./LoginForm";
+import { theme } from "../../../theme";
 
 export default function LoginPage() {
   return (
     <LoginPageStyled>
-      <Logo className={"logo-login-page"} />
-      <LoginForm />
+        <Logo className={"logo-login-page"} />
+        <LoginForm />
     </LoginPageStyled>
-  )
+  );
 }
 
 const LoginPageStyled = styled.div`
   height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: ${theme.spacing.sm};
 
-  ::before {
-    content: "";
-    background: url("/images/burger-and-fries-background.jpg") rgba(0, 0, 0, 0.7);
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: darken;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
+  background: url("/images/burger-and-fries-background.jpg") rgba(0, 0, 0, 0.7);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
 
   .logo-login-page {
-    transform: scale(2.5);
+    transform: scale(1.4);
+    margin-top: -168px; // can't use negative value from design system
   }
-`
+
+  @media screen and (min-width: 520px) {
+    row-gap: ${theme.spacing.lg};
+
+    .logo-login-page {
+      transform: scale(2);
+      max-width: 500px;
+    }
+  }
+
+  @media screen and (min-width: 979px) {
+    row-gap: ${theme.spacing.xl};
+
+    .logo-login-page {
+      transform: scale(3);
+      max-width: 600px;
+    }
+  }
+`;
