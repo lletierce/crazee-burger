@@ -50,11 +50,21 @@ export default function LoginForm() {
 const LoginFormStyled = styled.form`
   text-align: center;
   max-width: 500px;
-  /* min-width: 400px; */
   margin: 0px auto;
-  /* padding: 40px ${theme.spacing.lg}; */
+  padding: 20px ${theme.spacing.lg};
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
+
+  @media screen and (min-width: 520px) {
+    min-width: 400px;
+    max-width: 600px;
+  }
+
+  @media screen and (min-width: 979px) {
+    min-width: 500px;
+    max-width: 700px;
+  }
+
 
   hr {
     border: 1.5px solid ${theme.colors.loginLine};
@@ -63,19 +73,27 @@ const LoginFormStyled = styled.form`
 
   h1 {
     color: ${theme.colors.white};
-    /* font-size: ${theme.fonts.size.P5}; */
     font-size: ${theme.fonts.size.P4};
+
+    @media screen and (min-width: 520px) {
+      font-size: ${theme.fonts.size.P5};
+    }
 
   }
 
   h2 {
     margin: 20px 10px 10px;
     color: ${theme.colors.white};
-    /* font-size: ${theme.fonts.size.P4}; */
     font-size: ${theme.fonts.size.P3};
+
+    @media screen and (min-width: 520px) {
+      font-size: ${theme.fonts.size.P4};
+    }
   }
 
   .input-login {
     margin: 18px 0; // must be handled in Parent
   }
+
+
 `
