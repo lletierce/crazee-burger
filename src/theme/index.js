@@ -78,6 +78,14 @@ const animations = {
   },
 }
 
+const breakpoints ={
+  screen: {
+    sm: "520px", 
+    md: "979px",
+    lg: "1200px", 
+  },
+}
+
 export const theme = {
   colors,
   fonts,
@@ -86,4 +94,5 @@ export const theme = {
   shadows,
   spacing,
   animations,
+  breakpoints,
 }
