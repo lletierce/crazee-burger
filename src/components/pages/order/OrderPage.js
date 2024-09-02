@@ -11,8 +11,8 @@ import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
-import OrderPageMobile from "./OrderPageMobile";
 import { useWindowDimensions } from "react-native-web";
+import OrderSmallScreen from "./OrderSmallScreen";
 
 export default function OrderPage() {
   // state
@@ -21,15 +21,14 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+  const [isBasketVisible, setIsBasketVisible] = useState(false);
   const titleEditRef = useRef();
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
   const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
     useBasket();
   const { username } = useParams();
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth);
-
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu);
@@ -59,6 +58,8 @@ export default function OrderPage() {
     setNewProduct,
     productSelected,
     setProductSelected,
+    isBasketVisible,
+    setIsBasketVisible,
     handleEdit,
     titleEditRef,
     basket,
@@ -71,13 +72,13 @@ export default function OrderPage() {
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
-        {width > 520 ? (
+        {width > theme.breakpoints.screen.md ? (
           <div className="container">
             <Navbar />
             <Main />
           </div>
         ) : (
-          <OrderPageMobile />
+          <OrderSmallScreen />
         )}
       </OrderPageStyled>
     </OrderContext.Provider>

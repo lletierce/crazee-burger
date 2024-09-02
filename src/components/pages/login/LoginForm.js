@@ -75,7 +75,7 @@ const LoginFormStyled = styled.form`
     margin: ${theme.spacing.md} 0; // must be handled in Parent
   }
 
-  @media screen and (min-width: ${theme.breakpoints.screen.sm}) {
+  @media screen and (min-width: ${theme.breakpoints.screen.sm}px) {
     min-width: 400px;
     max-width: 600px;
 
@@ -84,7 +84,7 @@ const LoginFormStyled = styled.form`
     h2 {font-size: ${theme.fonts.size.P4};}
   }
 
-  @media screen and (min-width: ${theme.breakpoints.screen.md}) {
+  @media screen and (min-width: ${theme.breakpoints.screen.md}px) {
     min-width: 500px;
     max-width: 700px;
   }

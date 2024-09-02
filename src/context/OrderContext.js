@@ -29,4 +29,7 @@ export default createContext({
   basket: [],
   handleAddToBasket: () => {},
   handleDeleteBasketProduct: () => {},
+
+  isBasketVisible: false,
+  setIsBasketVisible: () => {},
 })
