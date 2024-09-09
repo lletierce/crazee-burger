@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 import { useWindowDimensions } from "react-native-web";
-import OrderSmallScreen from "./OrderSmallScreen";
+import ContainerOrderPageMobile from "./orderMobile/ContainerOrderPageMobile";
 
 export default function OrderPage() {
   // state
@@ -78,7 +78,7 @@ export default function OrderPage() {
             <Main />
           </div>
         ) : (
-          <OrderSmallScreen />
+          <ContainerOrderPageMobile />
         )}
       </OrderPageStyled>
     </OrderContext.Provider>
