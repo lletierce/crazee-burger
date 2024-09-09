@@ -4,6 +4,7 @@ import { theme } from "../../../theme";
 import { basketAnimation } from "../../../theme/animations";
 import OrderContext from "../../../context/OrderContext";
 import Loader from "./Main/MainRightSide/Menu/Loader";
+import CardStretched from "../../reusable-ui/CardStretched";
 
 export default function OrderSmallScreen() {
   // const [isBasketVisible, setIsBasketVisible] = useState(false);
@@ -40,11 +41,12 @@ export default function OrderSmallScreen() {
             <div>tool-2</div>
           </div>
           <div className="menu-container">
-            <ul>
+          <CardStretched />
+            {/* <ul>
               {menu.map((m, index)=>(
                 <li key={index}>{m.title}</li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>
