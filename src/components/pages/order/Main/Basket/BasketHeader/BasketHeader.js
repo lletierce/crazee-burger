@@ -56,4 +56,10 @@ const fontMobileStyled = css`
   font-size: ${theme.fonts.size.P3};
   font-weight: ${theme.fonts.weights.bold};
   letter-spacing: 1px;
+
+  .reduce-basket-icon{
+    &:hover {
+      color: ${theme.colors.white};
+    }
+  }
 `;
