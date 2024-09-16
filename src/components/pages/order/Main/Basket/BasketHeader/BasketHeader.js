@@ -10,7 +10,7 @@ import { useWindowDimensions } from "react-native-web";
 
 export default function BasketHeader() {
 
-  const { width } = useWindowDimensions(); // TODO : remove duplicate
+  const { width } = useWindowDimensions(); // @TODO : remove duplicate
 
   const { basket, menu, isBasketVisible, setIsBasketVisible } =
     useContext(OrderContext);
