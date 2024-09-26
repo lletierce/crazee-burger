@@ -21,7 +21,7 @@ export default function OrderToolbar({ onClick }) {
 
 const OrderToolbarStyled = styled.div`
   background: ${theme.colors.background_dark};
-  height: 5vh;
+  height: 8vh;
 
   display: flex;
   align-items: center;

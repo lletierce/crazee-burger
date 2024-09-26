@@ -6,6 +6,7 @@ import Loader from "../Main/MainRightSide/Menu/Loader";
 import Basket from "../Main/Basket/Basket";
 import Admin from "../Main/MainRightSide/Admin/Admin";
 import OrderToolbar from "./OrderToolbar";
+import Menu from "../Main/MainRightSide/Menu/Menu";
 
 export default function ContainerOrderPageMobile() {
   const { menu, isModeAdmin, isBasketVisible, setIsBasketVisible } =
@@ -19,15 +20,15 @@ export default function ContainerOrderPageMobile() {
   };
 
   // affichage
-  if (menu === undefined) return <Loader />; // #TODO : remove duplicate
+  if (menu === undefined) return <Loader />; // @TODO : remove duplicate
 
   return (
     <ContainerOrderPageMobileStyled>
       <NavbarMobile />
-      {/* #TODO : Add animations */}
+      {/* @TODO : Add animations */}
       {!isBasketVisible && <OrderToolbar  onClick={handleBasketDisplaying}/>}
       {isBasketVisible && (<div className="lateral-panel"><Basket /></div>)}
-      <div>menu</div>
+      <Menu />
       {isModeAdmin && <Admin />}
     </ContainerOrderPageMobileStyled>
   );
@@ -43,12 +44,12 @@ const ContainerOrderPageMobileStyled = styled.div`
 
   .lateral-panel {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     top: 0;
     left: 0;
     height: 90vh;
     width: 50vw;
     background-color: yellow;
-    margin-top: 10vh;
+    margin-top: 61px;
   }
 `;
