@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../utils/maths";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../context/OrderContext";
 import { calculateSumToPay } from "../Main/Basket/BasketHeader/helper";
+import { fadeInFromRight } from "../../../../theme/animations";
 
 export default function OrderToolbar({ onClick }) {
   const { basket, menu } = useContext(OrderContext);
@@ -13,8 +14,10 @@ export default function OrderToolbar({ onClick }) {
 
   return (
     <OrderToolbarStyled>
-        <div className="icon-basket" onClick={onClick}><FaShoppingBasket /></div>
-        <div className="price">{formatPrice(sumToPay)}</div>
+      <div className="icon-basket" onClick={onClick}>
+        <FaShoppingBasket />
+      </div>
+      <div className="price">{formatPrice(sumToPay)}</div>
     </OrderToolbarStyled>
   );
 }
@@ -47,4 +50,6 @@ const OrderToolbarStyled = styled.div`
     font-family: ${theme.fonts.family.stylish};
     font-weight: ${theme.fonts.weights.bold};
   }
+
+  animation: ${fadeInFromRight} ease-out ${theme.animations.speed.slow};
 `;

@@ -7,6 +7,8 @@ import Basket from "../Main/Basket/Basket";
 import Admin from "../Main/MainRightSide/Admin/Admin";
 import OrderToolbar from "./OrderToolbar";
 import Menu from "../Main/MainRightSide/Menu/Menu";
+import { fadeInFromLeft } from "../../../../theme/animations";
+import { theme } from "../../../../theme";
 
 export default function ContainerOrderPageMobile() {
   const { menu, isModeAdmin, isBasketVisible, setIsBasketVisible } =
@@ -25,7 +27,6 @@ export default function ContainerOrderPageMobile() {
   return (
     <ContainerOrderPageMobileStyled>
       <NavbarMobile />
-      {/* @TODO : Add animations */}
       {!isBasketVisible && <OrderToolbar  onClick={handleBasketDisplaying}/>}
       {isBasketVisible && (<div className="lateral-panel"><Basket /></div>)}
       <Menu />
@@ -35,7 +36,10 @@ export default function ContainerOrderPageMobile() {
 }
 
 const ContainerOrderPageMobileStyled = styled.div`
-  background-color: pink;
+  /* background-color: pink; */
+  background: transparent;
+  border: 0;
+  
   height: 100vh;
   width: 100vw;
 
@@ -51,5 +55,8 @@ const ContainerOrderPageMobileStyled = styled.div`
     width: 50vw;
     background-color: yellow;
     margin-top: 61px;
+
+    animation: ${fadeInFromLeft} ease-out ${theme.animations.speed.slow};
+
   }
 `;
