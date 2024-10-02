@@ -196,12 +196,18 @@ const fontMobileStyled = css`
     font-size: ${theme.fonts.size.P1};
   }
 
-  .text-info .left-info .price{
+  .text-info .left-info .price {
     font-size: ${theme.fonts.size.XXS};
   }
 
-  .text-info .quantity{
+  .text-info .quantity {
     font-size: ${theme.fonts.size.XXS};
     margin-right: ${theme.spacing.xs};
+  }
+
+  :hover {
+    .delete-button {
+      width: 42px;
+    }
   }
 `;
