@@ -3,11 +3,11 @@ import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 
-export default function Profile() {
+export default function Profile({ className }) {
   const { username } = useParams()
 
   return (
-    <ProfileStyled>
+    <ProfileStyled className={className}>
       <div className="info">
         <p>
           Hey, <b>{username}</b>

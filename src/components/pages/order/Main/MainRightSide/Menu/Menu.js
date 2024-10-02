@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import { formatPrice } from "../../../../../../utils/maths";
-import Card from "../../../../../reusable-ui/Card";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
@@ -18,6 +17,10 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { menuAnimation } from "../../../../../../theme/animations";
 import { convertStringToBoolean } from "../../../../../../utils/string";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated";
+import Card from "../../../../../reusable-ui/Card";
+import StretchedCard from "../../../../../reusable-ui/StretchedCard";
+
+import { useWindowDimensions } from "react-native-web";
 
 export default function Menu() {
   const {
@@ -32,6 +35,9 @@ export default function Menu() {
     handleDeleteBasketProduct,
     handleProductSelected,
   } = useContext(OrderContext);
+
+  const { width } = useWindowDimensions(); // @TODO : remove duplicate
+
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
@@ -57,28 +63,54 @@ export default function Menu() {
   }
 
   return (
-    <TransitionGroup component={MenuStyled} className="menu">
+    <TransitionGroup component={MenuStyled} className="menu" width={width}>
       {menu.map(
         ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
           return (
             <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
-              <div className={isModeAdmin ? "card-container is-hoverable" : "card-container"}>
+              <div
+                className={
+                  isModeAdmin ? "card-container is-hoverable" : "card-container"
+                }
+              >
                 {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
-                <Card
-                  title={title}
-                  imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-                  leftDescription={formatPrice(price)}
-                  hasDeleteButton={isModeAdmin}
-                  onDelete={(event) => handleCardDelete(event, id)}
-                  onClick={isModeAdmin ? () => handleProductSelected(id) : null}
-                  isHoverable={isModeAdmin}
-                  isSelected={checkIfProductIsClicked(id, productSelected.id)}
-                  onAdd={(event) => handleAddButton(event, id)}
-                  overlapImageSource={IMAGE_NO_STOCK}
-                  isOverlapImageVisible={
-                    convertStringToBoolean(isAvailable) === false
-                  }
-                />
+                {width > theme.breakpoints.screen.md ? (
+                  <Card // @TODO : remove duplicate
+                    title={title}
+                    imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+                    leftDescription={formatPrice(price)}
+                    hasDeleteButton={isModeAdmin}
+                    onDelete={(event) => handleCardDelete(event, id)}
+                    onClick={
+                      isModeAdmin ? () => handleProductSelected(id) : null
+                    }
+                    isHoverable={isModeAdmin}
+                    isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                    onAdd={(event) => handleAddButton(event, id)}
+                    overlapImageSource={IMAGE_NO_STOCK}
+                    isOverlapImageVisible={
+                      convertStringToBoolean(isAvailable) === false
+                    }
+                  />
+                ) : (
+                  <StretchedCard
+                    title={title}
+                    imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+                    leftDescription={formatPrice(price)}
+                    hasDeleteButton={isModeAdmin}
+                    onDelete={(event) => handleCardDelete(event, id)}
+                    onClick={
+                      isModeAdmin ? () => handleProductSelected(id) : null
+                    }
+                    isHoverable={isModeAdmin}
+                    isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                    onAdd={(event) => handleAddButton(event, id)}
+                    overlapImageSource={IMAGE_NO_STOCK}
+                    isOverlapImageVisible={
+                      convertStringToBoolean(isAvailable) === false
+                    }
+                  />
+                )}
               </div>
             </CSSTransition>
           );
@@ -90,12 +122,10 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-  grid-row-gap: 60px;
-  padding: 50px 50px 150px;
-  justify-items: center;
+
+  ${({ width }) =>
+    width <= theme.breakpoints.screen.md ? menuMobileLayout : menuDesktopLayout}
+
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
 
@@ -119,4 +149,21 @@ const MenuStyled = styled.div`
     z-index: 2;
   }
   ${ribbonAnimation}
+`;
+
+const menuDesktopLayout = css`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-row-gap: 60px;
+  padding: 50px 50px 150px;
+  justify-items: center;
+`;
+
+const menuMobileLayout = css`
+  padding: 50px 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
 `;

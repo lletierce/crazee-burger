@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import {
   BASKET_MESSAGE,
   IMAGE_COMING_SOON,
@@ -14,6 +14,8 @@ import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../../utils/maths";
 import { convertStringToBoolean } from "../../../../../../utils/string";
 import Sticker from "../../../../../reusable-ui/Sticker";
+import { useWindowDimensions } from "react-native-web";
+import { theme } from "../../../../../../theme";
 
 export default function BasketProducts() {
   const {
@@ -26,6 +28,9 @@ export default function BasketProducts() {
     productSelected,
   } = useContext(OrderContext);
 
+  const { width } = useWindowDimensions(); // @TODO : remove duplicate
+
+
   const handleOnDelete = (event, id) => {
     event.stopPropagation();
     handleDeleteBasketProduct(id, username);
@@ -35,6 +40,7 @@ export default function BasketProducts() {
     <TransitionGroup
       component={BasketProductsStyled}
       className={"transition-group"}
+      width={width}
     >
       {basket.map((basketProduct) => {
         const menuProduct = findObjectById(basketProduct.id, menu);
@@ -113,6 +119,13 @@ const BasketProductsStyled = styled.div`
       transform: translateX(-5%);
     }
   }
+  ${({ width}) => width <= theme.breakpoints.screen.md && mobileStyled}
 
   ${basketAnimation}
+`;
+
+const mobileStyled = css`
+  .card-container .badge-new {
+    bottom: 25%;
+  }
 `;

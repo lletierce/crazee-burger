@@ -80,9 +80,9 @@ const animations = {
 
 const breakpoints ={
   screen: {
-    sm: "520px", 
-    md: "979px",
-    lg: "1200px", 
+    sm: 520, 
+    md: 979,
+    lg: 1200, 
   },
 }
 

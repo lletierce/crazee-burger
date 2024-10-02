@@ -32,7 +32,7 @@ const LoginPageStyled = styled.div`
     margin-top: -168px; // can't use negative value from design system (string..)
   }
 
-  @media screen and (min-width: ${theme.breakpoints.screen.sm}) {
+  @media screen and (min-width: ${theme.breakpoints.screen.sm}px) {
     row-gap: ${theme.spacing.lg};
 
     .logo-login-page {
@@ -41,7 +41,7 @@ const LoginPageStyled = styled.div`
     }
   }
 
-  @media screen and (min-width: ${theme.breakpoints.screen.md}) {
+  @media screen and (min-width: ${theme.breakpoints.screen.md}px) {
     row-gap: ${theme.spacing.xl};
 
     .logo-login-page {

@@ -1,8 +1,9 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import { MdDeleteForever } from "react-icons/md"
-import { theme } from "../../../../../../theme"
-import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
+import React from "react";
+import styled, { css } from "styled-components";
+import { MdDeleteForever } from "react-icons/md";
+import { theme } from "../../../../../../theme";
+import CasinoEffect from "../../../../../reusable-ui/CasinoEffect";
+import { useWindowDimensions } from "react-native-web";
 
 export default function BasketCard({
   title,
@@ -15,12 +16,15 @@ export default function BasketCard({
   onDelete,
   isSelected,
 }) {
+  const { width } = useWindowDimensions(); // @TODO : move to gloabl?
+
   return (
     <BasketCardStyled
       className={className}
       isClickable={isClickable}
       onClick={onClick}
       isSelected={isSelected}
+      width={width}
     >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
@@ -40,7 +44,7 @@ export default function BasketCard({
         </div>
       </div>
     </BasketCardStyled>
-  )
+  );
 }
 
 const BasketCardStyled = styled.div`
@@ -172,8 +176,10 @@ const BasketCardStyled = styled.div`
     }
   }
 
-  ${({ isClickable, isSelected }) => isClickable && isSelected && selectedStyled}
-`
+  ${({ isClickable, isSelected }) =>
+    isClickable && isSelected && selectedStyled}
+  ${({ width }) => width <= theme.breakpoints.screen.md && fontMobileStyled}
+`;
 
 const selectedStyled = css`
   background: ${theme.colors.primary};
@@ -181,4 +187,27 @@ const selectedStyled = css`
   .quantity {
     color: ${theme.colors.white};
   }
-`
+`;
+
+const fontMobileStyled = css`
+  padding: 4px 4px;
+
+  .text-info .left-info .title span {
+    font-size: ${theme.fonts.size.P1};
+  }
+
+  .text-info .left-info .price {
+    font-size: ${theme.fonts.size.XXS};
+  }
+
+  .text-info .quantity {
+    font-size: ${theme.fonts.size.XXS};
+    margin-right: ${theme.spacing.xs};
+  }
+
+  :hover {
+    .delete-button {
+      width: 42px;
+    }
+  }
+`;
