@@ -161,7 +161,7 @@ const menuDesktopLayout = css`
 `;
 
 const menuMobileLayout = css`
-  padding: 50px 0 150px;
+  padding: 50px 0 50px;
   display: flex;
   flex-direction: column;
   align-items: center;

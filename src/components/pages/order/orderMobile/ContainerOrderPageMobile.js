@@ -51,10 +51,9 @@ const ContainerOrderPageMobileStyled = styled.div`
     z-index: 3;
     top: 0;
     left: 0;
-    height: 90vh;
+    height: max-content;
     width: 50vw;
-    background-color: yellow;
-    margin-top: 61px;
+    margin-top: 10vh;
 
     animation: ${fadeInFromLeft} ease-out ${theme.animations.speed.slow};
 
