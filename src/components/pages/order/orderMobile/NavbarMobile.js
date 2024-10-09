@@ -8,26 +8,26 @@ import Profile from "../Navbar/Profile";
 import { theme } from "../../../../theme";
 
 export default function NavbarMobile() {
-  const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
+  const { isModeAdmin } = useContext(OrderContext);
 
   const displayToastNotification = () => {
-    console.log("displayToastNotification");
-    setIsModeAdmin(!isModeAdmin);
+    // console.log("displayToastNotification");
+    // setIsModeAdmin(!isModeAdmin);
   };
 
   return (
     <NavbarMobileStyled>
-      <ToggleSmallButton
-        isChecked={isModeAdmin}
-        labelIfUnchecked="ACTIVER ADMIN"
-        labelIfChecked="DÉSACTIVER ADMIN"
-        onToggle={displayToastNotification}
-      />
+        <ToggleSmallButton
+          isChecked={isModeAdmin}
+          labelIfUnchecked="ACTIVER ADMIN"
+          labelIfChecked="DÉSACTIVER ADMIN"
+          onToggle={displayToastNotification}
+          isDisabled={false}
+        />
       <LogoTextless
         className="logo-order-page-mobile"
         onClick={() => refreshPage()}
       />
-      {/* <div>profile</div> */}
       <Profile className={"profile-order-page-mobile"} />
     </NavbarMobileStyled>
   );
@@ -44,7 +44,6 @@ const NavbarMobileStyled = styled.div`
   align-items: center;
 
   border-bottom: 1px solid ${theme.colors.greyLight};
-
 
   .logo-order-page-mobile {
   }

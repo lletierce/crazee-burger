@@ -7,9 +7,10 @@ export default function ToggleSmallButton({
   onToggle,
   labelIfChecked = "Fermer",
   labelIfUnchecked = "Ouvrir",
+  isDisabled = false,
 }) {
   return (
-    <ToggleSmallButtonStyled>
+    <ToggleSmallButtonStyled isDisabled={isDisabled}>
       <input
         type="checkbox"
         className="toggle"
@@ -28,10 +29,10 @@ export default function ToggleSmallButton({
 }
 
 const ToggleSmallButtonStyled = styled.div`
-  /* border: 1px solid red; */
+  opacity: ${isDisabled => isDisabled = true ? "0.5" : "1"};
+
 
   display: flex;
-  /* margin-right: 10px; */
   input[type="checkbox"] {
     // Hides the square box but keeps the core "toggle functionality"
     &.toggle {
@@ -48,7 +49,7 @@ const ToggleSmallButtonStyled = styled.div`
       border: 2px solid ${theme.colors.background_dark};
       padding: 0;
       margin: 0;
-      cursor: pointer;
+      cursor: ${isDisabled => isDisabled = true ? "not-allowed" : "pointer"};
       box-sizing: border-box;
       transition: all 500ms ease;
     }
@@ -66,7 +67,6 @@ const ToggleSmallButtonStyled = styled.div`
 
     // text inside the switch button (for checked and unchecked)
     &.toggle + label:after {
-      /* border: 1px solid blue; */
       width: 75px;
       text-align: center;
       z-index: 2;
@@ -90,7 +90,6 @@ const ToggleSmallButtonStyled = styled.div`
 
     &.toggle:not(:checked) + label {
       background-color: ${theme.colors.background_dark};
-      /* text-align: right; */
     }
 
     // text label when not checked
