@@ -10,6 +10,8 @@ import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
+import burger_bg from "../../../assets/images/Burger-and-fries-background.jpg"
+
 
 import { useWindowDimensions } from "react-native-web";
 import ContainerOrderPageMobile from "./orderMobile/ContainerOrderPageMobile";
@@ -86,14 +88,19 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background: ${theme.colors.primary};
+  background-color: ${theme.colors.primary};
+  background: url(${burger_bg}) rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
+  
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    background: red;
+    /* background: red; */
     height: 95vh;
     width: 1400px;
     display: flex;
