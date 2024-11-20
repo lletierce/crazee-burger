@@ -23,11 +23,14 @@ const TextInputStyled = styled.div`
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 8px;
     display: flex; // to center icon vertically
+    transform: scale(1.5);
+
   }
 
   input {
     border: none;
-    font-size: ${theme.fonts.size.SM};
+    font-size: ${theme.fonts.size.P1};
+
     width: 100%;
 
     &::placeholder {
@@ -45,7 +48,7 @@ const TextInputStyled = styled.div`
 
 const extraStyleNormal = css`
   background-color: ${theme.colors.white};
-  padding: 18px 28px;
+  padding: 15px 28px; /* top and bottom | left and right */
   color: ${theme.colors.greySemiDark};
 
   input {
@@ -59,7 +62,7 @@ const extraStyleNormal = css`
 
 const extraStyleMinimalist = css`
   background-color: ${theme.colors.background_white};
-  padding: 8px 16px;
+  padding: 8px 16px; 
   color: ${theme.colors.greyBlue};
 
   input {
