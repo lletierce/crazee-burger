@@ -13,7 +13,7 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
-  background: ${theme.colors.background_white};
+  /* background: ${theme.colors.background_white}; */
   height: calc(95vh - 10vh);
 
   border-bottom-left-radius: ${theme.borderRadius.extraRound};

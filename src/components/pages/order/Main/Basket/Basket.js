@@ -15,7 +15,7 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-  background: ${theme.colors.background_white};
+  /* background: ${theme.colors.background_white}; */
   box-shadow: ${theme.shadows.basket};
   display: flex;
   flex-direction: column;

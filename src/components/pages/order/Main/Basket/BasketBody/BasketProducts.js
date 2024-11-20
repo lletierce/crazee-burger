@@ -90,11 +90,12 @@ export default function BasketProducts() {
 }
 
 const BasketProductsStyled = styled.div`
-  /* border: 1px solid red; */
+  background: ${theme.colors.background_white};
+  
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: scroll;  
 
   .card-container {
     /* border: 1px solid blue; */
