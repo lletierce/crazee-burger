@@ -24,7 +24,10 @@ export default function OrderToolbar({ onClick }) {
 
 const OrderToolbarStyled = styled.div`
   background: ${theme.colors.background_dark};
-  height: 8vh;
+  height: 100%;
+  min-height: 70px;
+  max-height: fit-content;
+
 
   display: flex;
   align-items: center;
@@ -48,7 +51,9 @@ const OrderToolbarStyled = styled.div`
   .price {
     color: ${theme.colors.primary};
     font-family: ${theme.fonts.family.stylish};
+    font-size: ${theme.fonts.size.P3};
     font-weight: ${theme.fonts.weights.bold};
+    letter-spacing: 2px;
   }
 
   animation: ${fadeInFromRight} ease-out ${theme.animations.speed.slow};
