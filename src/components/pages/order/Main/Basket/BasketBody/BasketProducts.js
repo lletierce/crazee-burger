@@ -16,6 +16,7 @@ import { convertStringToBoolean } from "../../../../../../utils/string";
 import Sticker from "../../../../../reusable-ui/Sticker";
 import { useWindowDimensions } from "react-native-web";
 import { theme } from "../../../../../../theme";
+import BasketCardMobile from "./BasketCardMobile";
 
 export default function BasketProducts() {
   const {
@@ -29,7 +30,6 @@ export default function BasketProducts() {
   } = useContext(OrderContext);
 
   const { width } = useWindowDimensions(); // @TODO : remove duplicate
-
 
   const handleOnDelete = (event, id) => {
     event.stopPropagation();
@@ -55,32 +55,50 @@ export default function BasketProducts() {
               {convertStringToBoolean(menuProduct.isPublicised) && (
                 <Sticker className="badge-new" />
               )}
-              <BasketCard
-                {...menuProduct}
-                imageSource={
-                  menuProduct.imageSource
-                    ? menuProduct.imageSource
-                    : IMAGE_COMING_SOON
-                }
-                quantity={basketProduct.quantity}
-                onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-                isClickable={isModeAdmin}
-                onClick={
-                  isModeAdmin
-                    ? () => handleProductSelected(basketProduct.id)
-                    : null
-                }
-                isSelected={checkIfProductIsClicked(
-                  basketProduct.id,
-                  productSelected.id
-                )}
-                className={"card"}
-                price={
-                  convertStringToBoolean(menuProduct.isAvailable)
-                    ? formatPrice(menuProduct.price)
-                    : BASKET_MESSAGE.NOT_AVAILABLE
-                }
-              />
+              {width > theme.breakpoints.screen.md ? (
+                <BasketCard
+                  {...menuProduct}
+                  imageSource={
+                    menuProduct.imageSource
+                      ? menuProduct.imageSource
+                      : IMAGE_COMING_SOON
+                  }
+                  quantity={basketProduct.quantity}
+                  onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                  isClickable={isModeAdmin}
+                  onClick={
+                    isModeAdmin
+                      ? () => handleProductSelected(basketProduct.id)
+                      : null
+                  }
+                  isSelected={checkIfProductIsClicked(
+                    basketProduct.id,
+                    productSelected.id
+                  )}
+                  className={"card"}
+                  price={
+                    convertStringToBoolean(menuProduct.isAvailable)
+                      ? formatPrice(menuProduct.price)
+                      : BASKET_MESSAGE.NOT_AVAILABLE
+                  }
+                />
+              ) : (
+                <BasketCardMobile
+                  {...menuProduct}
+                  imageSource={
+                    menuProduct.imageSource
+                      ? menuProduct.imageSource
+                      : IMAGE_COMING_SOON
+                  }
+                  quantity={basketProduct.quantity}
+                  onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                  price={
+                    convertStringToBoolean(menuProduct.isAvailable)
+                      ? formatPrice(menuProduct.price)
+                      : BASKET_MESSAGE.NOT_AVAILABLE
+                  }
+                />
+              )}
             </div>
           </CSSTransition>
         );
@@ -91,11 +109,11 @@ export default function BasketProducts() {
 
 const BasketProductsStyled = styled.div`
   background: ${theme.colors.background_white};
-  
+
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;  
+  overflow-y: scroll;
 
   .card-container {
     /* border: 1px solid blue; */
@@ -120,13 +138,21 @@ const BasketProductsStyled = styled.div`
       transform: translateX(-5%);
     }
   }
-  ${({ width}) => width <= theme.breakpoints.screen.md && mobileStyled}
+  ${({ width }) => width <= theme.breakpoints.screen.md && mobileStyled}
 
   ${basketAnimation}
 `;
 
 const mobileStyled = css`
-  .card-container .badge-new {
-    bottom: 25%;
+  .card-container {
+    height: 64px;
+
+    .badge-new {
+      width: 10px;
+      height: 10px;
+
+      left: 15%;
+      bottom: 10%;
+    }
   }
 `;

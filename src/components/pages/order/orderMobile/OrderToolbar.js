@@ -26,7 +26,7 @@ const OrderToolbarStyled = styled.div`
   background: ${theme.colors.background_dark};
   height: 100%;
   min-height: 70px;
-  max-height: fit-content;
+  max-height: 80px;
 
 
   display: flex;
