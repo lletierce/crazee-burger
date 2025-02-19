@@ -52,9 +52,9 @@ export default function BasketProducts() {
             timeout={300}
           >
             <div className="card-container">
-              {/* {convertStringToBoolean(menuProduct.isPublicised) && (
+              {convertStringToBoolean(menuProduct.isPublicised) && (
                 <Sticker className="badge-new" />
-              )} */}
+              )}
               {width > theme.breakpoints.screen.md ? (
                 <BasketCard
                   {...menuProduct}
@@ -148,7 +148,11 @@ const mobileStyled = css`
     height: 64px;
 
     .badge-new {
-    bottom: 25%;
-  }
+      width: 10px;
+      height: 10px;
+
+      left: 15%;
+      bottom: 10%;
+    }
   }
 `;
