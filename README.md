@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# CRAZEE-BURGER -> Initiation de react en entreprise
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Accompagné par la formation "React en entreprise" de ViDev, voir/revoir les fondamentaux de React dans un
+environnement professionel.
 
 ## Available Scripts
 
