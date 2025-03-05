@@ -86,7 +86,7 @@ const LARGE = [
     price: 5.4985,
     quantity: 0,
     isAvailable: true,
-    isPublicised: false,
+    isPublicised: true,
   },
   {
     id: "3",
@@ -94,7 +94,7 @@ const LARGE = [
     title: "Burger poulet",
     price: 5.367,
     quantity: 0,
-    isAvailable: true,
+    isAvailable: false,
     isPublicised: false,
   },
   {
