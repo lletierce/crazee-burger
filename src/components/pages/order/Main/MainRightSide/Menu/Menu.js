@@ -3,11 +3,8 @@ import styled, { css } from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import { formatPrice } from "../../../../../../utils/maths";
-import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import { checkIfProductIsClicked } from "./helper";
 import {
-  EMPTY_PRODUCT,
   IMAGE_COMING_SOON,
   IMAGE_NO_STOCK,
 } from "../../../../../../enums/product";
@@ -23,31 +20,20 @@ import StretchedCard from "../../../../../reusable-ui/StretchedCard";
 import { useWindowDimensions } from "react-native-web";
 
 export default function Menu() {
-  const {
-    username,
-    menu,
-    isModeAdmin,
-    handleDelete,
-    resetMenu,
-    productSelected,
-    setProductSelected,
-    handleAddToBasket,
-    handleDeleteBasketProduct,
-    handleProductSelected,
-  } = useContext(OrderContext);
+  const { username, menu, handleAddToBasket } = useContext(OrderContext)
 
   const { width } = useWindowDimensions(); // @TODO : remove duplicate
 
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
-  const handleCardDelete = (event, idProductToDelete) => {
-    event.stopPropagation();
-    handleDelete(idProductToDelete, username);
-    handleDeleteBasketProduct(idProductToDelete, username);
-    idProductToDelete === productSelected.id &&
-      setProductSelected(EMPTY_PRODUCT);
-  };
+  // const handleCardDelete = (event, idProductToDelete) => {
+  //   event.stopPropagation();
+  //   handleDelete(idProductToDelete, username);
+  //   handleDeleteBasketProduct(idProductToDelete, username);
+  //   idProductToDelete === productSelected.id &&
+  //     setProductSelected(EMPTY_PRODUCT);
+  // };
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation();
@@ -57,10 +43,12 @@ export default function Menu() {
   // affichage
   if (menu === undefined) return <Loader />;
 
-  if (isEmpty(menu)) {
-    if (!isModeAdmin) return <EmptyMenuClient />;
-    return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
-  }
+  // if (isEmpty(menu)) {
+  //   if (!isModeAdmin) return <EmptyMenuClient />;
+  //   return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
+  // }
+  if (isEmpty(menu)) return <EmptyMenuClient />;
+
 
   return (
     <TransitionGroup component={MenuStyled} className="menu" width={width}>
@@ -68,47 +56,45 @@ export default function Menu() {
         ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
           return (
             <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
-              <div
-                className={
-                  isModeAdmin ? "card-container is-hoverable" : "card-container"
-                }
-              >
+              {/* <div
+                className={isModeAdmin ? "card-container is-hoverable" : "card-container"}> */}
+               <div className="card-container">
                 {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
                 {width > theme.breakpoints.screen.md ? (
                   <Card // @TODO : remove duplicate
                     title={title}
                     imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
                     leftDescription={formatPrice(price)}
-                    hasDeleteButton={isModeAdmin}
-                    onDelete={(event) => handleCardDelete(event, id)}
-                    onClick={
-                      isModeAdmin ? () => handleProductSelected(id) : null
-                    }
-                    isHoverable={isModeAdmin}
-                    isSelected={checkIfProductIsClicked(id, productSelected.id)}
                     onAdd={(event) => handleAddButton(event, id)}
                     overlapImageSource={IMAGE_NO_STOCK}
                     isOverlapImageVisible={
                       convertStringToBoolean(isAvailable) === false
                     }
+                    // hasDeleteButton={isModeAdmin}
+                    // onDelete={(event) => handleCardDelete(event, id)}
+                    // onClick={
+                    //   isModeAdmin ? () => handleProductSelected(id) : null
+                    // }
+                    // isHoverable={isModeAdmin}
+                    // isSelected={checkIfProductIsClicked(id, productSelected.id)}
                   />
                 ) : (
                   <StretchedCard
                     title={title}
                     imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
                     leftDescription={formatPrice(price)}
-                    hasDeleteButton={isModeAdmin}
-                    onDelete={(event) => handleCardDelete(event, id)}
-                    onClick={
-                      isModeAdmin ? () => handleProductSelected(id) : null
-                    }
-                    isHoverable={isModeAdmin}
-                    isSelected={checkIfProductIsClicked(id, productSelected.id)}
                     onAdd={(event) => handleAddButton(event, id)}
                     overlapImageSource={IMAGE_NO_STOCK}
                     isOverlapImageVisible={
                       convertStringToBoolean(isAvailable) === false
                     }
+                    // hasDeleteButton={isModeAdmin}
+                    // onDelete={(event) => handleCardDelete(event, id)}
+                    // onClick={
+                    //   isModeAdmin ? () => handleProductSelected(id) : null
+                    // }
+                    // isHoverable={isModeAdmin}
+                    // isSelected={checkIfProductIsClicked(id, productSelected.id)}
                   />
                 )}
               </div>
@@ -135,14 +121,6 @@ const MenuStyled = styled.div`
     position: relative;
     height: 330px; // pour éviter une zone de click verticale bizarre qu'on voit qu'au pointeur de l'outil inspect du navigateur
     border-radius: ${theme.borderRadius.extraRound};
-
-    &.is-hoverable {
-      :hover {
-        /* border: 1px solid red; */
-        transform: scale(1.05);
-        transition: ease-out 0.4s;
-      }
-    }
   }
 
   .ribbon {
