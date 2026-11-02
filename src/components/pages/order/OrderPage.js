@@ -8,8 +8,7 @@ import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
-import burger_bg from "../../../assets/images/Burger-and-fries-background.jpg"
-
+import burger_bg from "../../../assets/images/Burger-and-fries-background.jpg";
 
 import { useWindowDimensions } from "react-native-web";
 import ContainerOrderPageMobile from "./orderMobile/ContainerOrderPageMobile";
@@ -25,7 +24,8 @@ export default function OrderPage() {
   // const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
   const [isBasketVisible, setIsBasketVisible] = useState(false);
   const { menu, setMenu } = useMenu();
-  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
+    useBasket();
   const { username } = useParams();
   const { width } = useWindowDimensions();
 
@@ -39,7 +39,7 @@ export default function OrderPage() {
 
   useEffect(() => {
     initialiseUserSession(username, setMenu, setBasket);
-  }, []);
+  }, [username, setMenu, setBasket]);
 
   const orderContextValue = {
     username,
@@ -74,7 +74,7 @@ const OrderPageStyled = styled.div`
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
-  
+
   height: 100vh;
   display: flex;
   justify-content: center;
