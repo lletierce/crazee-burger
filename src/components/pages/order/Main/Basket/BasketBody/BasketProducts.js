@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 import styled, { css } from "styled-components/macro";
 import {
@@ -8,7 +7,6 @@ import {
 import BasketCard from "./BasketCard";
 import OrderContext from "../../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../../utils/array";
-import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../../utils/maths";
@@ -19,14 +17,20 @@ import { theme } from "../../../../../../theme";
 import BasketCardMobile from "./BasketCardMobile";
 
 export default function BasketProducts() {
-  const {
-    username,
-    basket,
-    isModeAdmin,
-    handleDeleteBasketProduct,
-    menu,
-    handleProductSelected,
-    productSelected,
+  // const {
+  //   username,
+  //   basket,
+  //   isModeAdmin,
+  //   handleDeleteBasketProduct,
+  //   menu,
+  //   handleProductSelected,
+  //   productSelected,
+  // } = useContext(OrderContext);
+  const { 
+    username, 
+    basket, 
+    handleDeleteBasketProduct, 
+    menu 
   } = useContext(OrderContext);
 
   const { width } = useWindowDimensions(); // @TODO : remove duplicate
@@ -65,22 +69,22 @@ export default function BasketProducts() {
                   }
                   quantity={basketProduct.quantity}
                   onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-                  isClickable={isModeAdmin}
-                  onClick={
-                    isModeAdmin
-                      ? () => handleProductSelected(basketProduct.id)
-                      : null
-                  }
-                  isSelected={checkIfProductIsClicked(
-                    basketProduct.id,
-                    productSelected.id
-                  )}
                   className={"card"}
                   price={
                     convertStringToBoolean(menuProduct.isAvailable)
                       ? formatPrice(menuProduct.price)
                       : BASKET_MESSAGE.NOT_AVAILABLE
                   }
+                  // isClickable={isModeAdmin}
+                  // onClick={
+                  //   isModeAdmin
+                  //     ? () => handleProductSelected(basketProduct.id)
+                  //     : null
+                  // }
+                  // isSelected={checkIfProductIsClicked(
+                  //   basketProduct.id,
+                  //   productSelected.id
+                  // )}
                 />
               ) : (
                 <BasketCardMobile

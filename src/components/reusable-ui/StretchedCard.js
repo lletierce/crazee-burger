@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
-import { IoMdAddCircle } from "react-icons/io";
 import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
 
 export default function StretchedCard({

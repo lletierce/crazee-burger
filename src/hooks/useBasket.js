@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { fakeBasket } from "../fakeData/fakeBasket"
 import { deepClone, findObjectById, findIndexById, removeObjectById } from "../utils/array"
 import { setLocalStorage } from "../utils/window"
 

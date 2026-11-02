@@ -1,7 +1,20 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
 export default createContext({
   username: "",
+
+  menu: [],
+
+  basket: [],
+  handleAddToBasket: () => {},
+  handleDeleteBasketProduct: () => {},
+
+  isBasketVisible: false,
+  setIsBasketVisible: () => {},
+});
+
+/*
+username: "",
   isModeAdmin: false,
   setIsModeAdmin: () => {},
 
@@ -32,4 +45,4 @@ export default createContext({
 
   isBasketVisible: false,
   setIsBasketVisible: () => {},
-})
+*/

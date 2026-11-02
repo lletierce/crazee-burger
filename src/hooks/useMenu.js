@@ -1,10 +1,14 @@
 import { useState } from "react"
-import { fakeMenu } from "../fakeData/fakeMenu"
-import { deepClone } from "../utils/array"
-import { syncBothMenus } from "../api/product"
 
 export const useMenu = () => {
   const [menu, setMenu] = useState()
+
+  return { menu, setMenu}
+}
+
+
+/*
+const [menu, setMenu] = useState()
 
   // comportements (gestionnaire de state ou "state handlers")
   const handleAdd = (newProduct, username) => {
@@ -53,4 +57,4 @@ export const useMenu = () => {
   }
 
   return { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu }
-}
+ */
