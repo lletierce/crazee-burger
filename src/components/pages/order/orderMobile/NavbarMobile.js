@@ -1,29 +1,13 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
-import OrderContext from "../../../../context/OrderContext";
-import ToggleSmallButton from "../../../reusable-ui/ToggleSmallButton";
 import { refreshPage } from "../../../../utils/window";
 import LogoTextless from "../../../reusable-ui/LogoTextless";
 import Profile from "../Navbar/Profile";
 import { theme } from "../../../../theme";
 
 export default function NavbarMobile() {
-  const { isModeAdmin } = useContext(OrderContext);
-
-  const displayToastNotification = () => {
-    // console.log("displayToastNotification");
-    // setIsModeAdmin(!isModeAdmin);
-  };
-
+ 
   return (
     <NavbarMobileStyled>
-        <ToggleSmallButton
-          isChecked={isModeAdmin}
-          labelIfUnchecked="ACTIVER ADMIN"
-          labelIfChecked="DÉSACTIVER ADMIN"
-          onToggle={displayToastNotification}
-          isDisabled={false}
-        />
       <LogoTextless
         className="logo-order-page-mobile"
         onClick={() => refreshPage()}
