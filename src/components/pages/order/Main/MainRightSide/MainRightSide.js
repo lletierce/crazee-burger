@@ -1,17 +1,13 @@
-import { useContext } from "react"
 import styled from "styled-components"
-import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
-import Admin from "./Admin/Admin"
 import Menu from "./Menu/Menu"
 
 export default function MainRightSide() {
-  const { isModeAdmin } = useContext(OrderContext)
 
   return (
     <MainRightSideStyled>
       <Menu />
-      {isModeAdmin && <Admin />}
+      {/* {isModeAdmin && <Admin />} */}
     </MainRightSideStyled>
   )
 }
