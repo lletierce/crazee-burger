@@ -12,7 +12,6 @@ import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { menuAnimation } from "../../../../../../theme/animations";
-import { convertStringToBoolean } from "../../../../../../utils/string";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated";
 import Card from "../../../../../reusable-ui/Card";
 import StretchedCard from "../../../../../reusable-ui/StretchedCard";
@@ -20,21 +19,13 @@ import StretchedCard from "../../../../../reusable-ui/StretchedCard";
 import { useWindowDimensions } from "react-native-web";
 
 export default function Menu() {
-  const { username, menu, handleAddToBasket } = useContext(OrderContext)
+  const { username, menu, handleAddToBasket } = useContext(OrderContext);
 
   const { width } = useWindowDimensions(); // @TODO : remove duplicate
 
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
-  // const handleCardDelete = (event, idProductToDelete) => {
-  //   event.stopPropagation();
-  //   handleDelete(idProductToDelete, username);
-  //   handleDeleteBasketProduct(idProductToDelete, username);
-  //   idProductToDelete === productSelected.id &&
-  //     setProductSelected(EMPTY_PRODUCT);
-  // };
-
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation();
     handleAddToBasket(idProductToAdd, username);
@@ -43,12 +34,7 @@ export default function Menu() {
   // affichage
   if (menu === undefined) return <Loader />;
 
-  // if (isEmpty(menu)) {
-  //   if (!isModeAdmin) return <EmptyMenuClient />;
-  //   return <EmptyMenuAdmin onReset={() => resetMenu(username)} />;
-  // }
   if (isEmpty(menu)) return <EmptyMenuClient />;
-
 
   return (
     <TransitionGroup component={MenuStyled} className="menu" width={width}>
@@ -56,10 +42,8 @@ export default function Menu() {
         ({ id, title, imageSource, price, isAvailable, isPublicised }) => {
           return (
             <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
-              {/* <div
-                className={isModeAdmin ? "card-container is-hoverable" : "card-container"}> */}
-               <div className="card-container">
-                {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
+              <div className="card-container">
+                {isPublicised && <RibbonAnimated />}
                 {width > theme.breakpoints.screen.md ? (
                   <Card // @TODO : remove duplicate
                     title={title}
@@ -67,16 +51,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     onAdd={(event) => handleAddButton(event, id)}
                     overlapImageSource={IMAGE_NO_STOCK}
-                    isOverlapImageVisible={
-                      convertStringToBoolean(isAvailable) === false
-                    }
-                    // hasDeleteButton={isModeAdmin}
-                    // onDelete={(event) => handleCardDelete(event, id)}
-                    // onClick={
-                    //   isModeAdmin ? () => handleProductSelected(id) : null
-                    // }
-                    // isHoverable={isModeAdmin}
-                    // isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                    isOverlapImageVisible={!isAvailable}
                   />
                 ) : (
                   <StretchedCard
@@ -85,22 +60,13 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     onAdd={(event) => handleAddButton(event, id)}
                     overlapImageSource={IMAGE_NO_STOCK}
-                    isOverlapImageVisible={
-                      convertStringToBoolean(isAvailable) === false
-                    }
-                    // hasDeleteButton={isModeAdmin}
-                    // onDelete={(event) => handleCardDelete(event, id)}
-                    // onClick={
-                    //   isModeAdmin ? () => handleProductSelected(id) : null
-                    // }
-                    // isHoverable={isModeAdmin}
-                    // isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                    isOverlapImageVisible={!isAvailable}
                   />
                 )}
               </div>
             </CSSTransition>
           );
-        }
+        },
       )}
     </TransitionGroup>
   );

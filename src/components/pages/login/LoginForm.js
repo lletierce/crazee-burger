@@ -8,21 +8,16 @@ import Button from "../../reusable-ui/Button"
 import { theme } from "../../../theme"
 import Welcome from "./Welcome"
 
-// Avant, le formulaire allait chercher le document users/{prénom} dans Firestore, 
-// le créait avec un menu par défaut s’il n’existait pas, puis redirigeait. 
-// Maintenant, il redirige directement : le prénom ne sert plus qu’à afficher « Hey, Bob » et à servir de clé au panier 
+// Maintenant, le formulaire redirige directement : le prénom ne sert plus qu’à afficher « Hey, Bob » et à servir de clé au panier 
 // dans le localStorage.
-
 export default function LoginForm() {
   // state
   const [username, setUsername] = useState("")
   const navigate = useNavigate()
 
   // comportements
-  // const handleSubmit = async (event) => {
   const handleSubmit = (event) => {
     event.preventDefault()
-    // const userReceived = await authenticateUser(username)
     setUsername("")
     navigate(`order/${username}`)
   }
