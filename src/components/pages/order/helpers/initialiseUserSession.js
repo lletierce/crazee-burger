@@ -2,7 +2,6 @@ import { getMenu } from "../../../../api/product";
 import { getLocalStorage, setLocalStorage } from "../../../../utils/window";
 import { findObjectById } from "../../../../utils/array";
 
-
 /**
  * 
  On a besoin du menu pour filtrer le panier. On ne peut pas le relire depuis le state juste après setMenu, 
@@ -10,10 +9,15 @@ import { findObjectById } from "../../../../utils/array";
  qu’au rendu suivant. La fonction renvoie donc directement la valeur qu’elle a reçue, 
  c’est un piège classique de React
  */
-const intialiseMenu = async (username, setMenu) => {
-  const menuReceived = await getMenu(username);
-  setMenu(menuReceived);
-  return menuReceived;
+const intialiseMenu = async (setMenu) => {
+  try {
+    const menuReceived = await getMenu();
+    setMenu(menuReceived);
+    return menuReceived;
+  } catch (error) {
+    console.error("Impossible de charger le menu : ", error);
+    setMenu([]);
+  }
 };
 
 const intialiseBasket = (username, menu, setBasket) => {
@@ -33,10 +37,9 @@ const intialiseBasket = (username, menu, setBasket) => {
 };
 
 export const initialiseUserSession = async (username, setMenu, setBasket) => {
-  const menu = await intialiseMenu(username, setMenu);
+  const menu = await intialiseMenu(setMenu);
   intialiseBasket(username, menu, setBasket);
 };
 
-
-// Le menu est lu une seule fois, au chargement de la page. Il ne change pas pendant la session, donc le panier ne peut pas redevenir incohérent après ce nettoyage. 
+// Le menu est lu une seule fois, au chargement de la page. Il ne change pas pendant la session, donc le panier ne peut pas redevenir incohérent après ce nettoyage.
 // Si un jour on ajoute la mise à jour en temps réel, il faudra revoir cette logique.
