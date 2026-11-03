@@ -7,7 +7,6 @@ export default function MainRightSide() {
   return (
     <MainRightSideStyled>
       <Menu />
-      {/* {isModeAdmin && <Admin />} */}
     </MainRightSideStyled>
   )
 }

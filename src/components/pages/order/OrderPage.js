@@ -15,13 +15,6 @@ import ContainerOrderPageMobile from "./orderMobile/ContainerOrderPageMobile";
 
 export default function OrderPage() {
   // state
-  // const [isModeAdmin, setIsModeAdmin] = useState(false);
-  // const [isCollapsed, setIsCollapsed] = useState(false);
-  // const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  // const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  // const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
-  // const titleEditRef = useRef();
-  // const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
   const [isBasketVisible, setIsBasketVisible] = useState(false);
   const { menu, setMenu } = useMenu();
   const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
@@ -29,13 +22,6 @@ export default function OrderPage() {
   const { username } = useParams();
   const { width } = useWindowDimensions();
 
-  // const handleProductSelected = async (idProductClicked) => {
-  //   const productClickedOn = findObjectById(idProductClicked, menu);
-  //   await setIsCollapsed(false);
-  //   await setCurrentTabSelected("edit");
-  //   await setProductSelected(productClickedOn);
-  //   titleEditRef.current.focus();
-  // };
 
   useEffect(() => {
     initialiseUserSession(username, setMenu, setBasket);

@@ -29,7 +29,6 @@ export default function ContainerOrderPageMobile() {
       {!isBasketVisible && <OrderToolbar  onClick={handleBasketDisplaying}/>}
       {isBasketVisible && (<div className="lateral-panel"><Basket /></div>)}
       <Menu />
-      {/* {isModeAdmin && <Admin />} */}
     </ContainerOrderPageMobileStyled>
   );
 }

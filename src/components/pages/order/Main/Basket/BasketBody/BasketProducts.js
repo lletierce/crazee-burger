@@ -17,21 +17,8 @@ import { theme } from "../../../../../../theme";
 import BasketCardMobile from "./BasketCardMobile";
 
 export default function BasketProducts() {
-  // const {
-  //   username,
-  //   basket,
-  //   isModeAdmin,
-  //   handleDeleteBasketProduct,
-  //   menu,
-  //   handleProductSelected,
-  //   productSelected,
-  // } = useContext(OrderContext);
-  const { 
-    username, 
-    basket, 
-    handleDeleteBasketProduct, 
-    menu 
-  } = useContext(OrderContext);
+  const { username, basket, handleDeleteBasketProduct, menu } =
+    useContext(OrderContext);
 
   const { width } = useWindowDimensions(); // @TODO : remove duplicate
 
@@ -75,16 +62,6 @@ export default function BasketProducts() {
                       ? formatPrice(menuProduct.price)
                       : BASKET_MESSAGE.NOT_AVAILABLE
                   }
-                  // isClickable={isModeAdmin}
-                  // onClick={
-                  //   isModeAdmin
-                  //     ? () => handleProductSelected(basketProduct.id)
-                  //     : null
-                  // }
-                  // isSelected={checkIfProductIsClicked(
-                  //   basketProduct.id,
-                  //   productSelected.id
-                  // )}
                 />
               ) : (
                 <BasketCardMobile
