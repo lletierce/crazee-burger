@@ -4,12 +4,14 @@ import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import { formatPrice } from "../../../../../../utils/maths";
 import EmptyMenuClient from "./EmptyMenuClient";
-import {IMAGE_COMING_SOON, IMAGE_NO_STOCK,} from "../../../../../../enums/product";
+import {
+  IMAGE_COMING_SOON,
+  IMAGE_NO_STOCK,
+} from "../../../../../../enums/product";
 import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { menuAnimation } from "../../../../../../theme/animations";
-import { convertStringToBoolean } from "../../../../../../utils/string";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated";
 import Card from "../../../../../reusable-ui/Card";
 import StretchedCard from "../../../../../reusable-ui/StretchedCard";
@@ -41,7 +43,7 @@ export default function Menu() {
           return (
             <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
               <div className="card-container">
-                {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
+                {isPublicised && <RibbonAnimated />}
                 {width > theme.breakpoints.screen.md ? (
                   <Card // @TODO : remove duplicate
                     title={title}
@@ -49,9 +51,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     onAdd={(event) => handleAddButton(event, id)}
                     overlapImageSource={IMAGE_NO_STOCK}
-                    isOverlapImageVisible={
-                      convertStringToBoolean(isAvailable) === false
-                    }
+                    isOverlapImageVisible={!isAvailable}
                   />
                 ) : (
                   <StretchedCard
@@ -60,9 +60,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     onAdd={(event) => handleAddButton(event, id)}
                     overlapImageSource={IMAGE_NO_STOCK}
-                    isOverlapImageVisible={
-                      convertStringToBoolean(isAvailable) === false
-                    }
+                    isOverlapImageVisible={!isAvailable}
                   />
                 )}
               </div>

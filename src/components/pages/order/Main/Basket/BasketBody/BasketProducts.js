@@ -10,7 +10,6 @@ import { findObjectById } from "../../../../../../utils/array";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketAnimation } from "../../../../../../theme/animations";
 import { formatPrice } from "../../../../../../utils/maths";
-import { convertStringToBoolean } from "../../../../../../utils/string";
 import Sticker from "../../../../../reusable-ui/Sticker";
 import { useWindowDimensions } from "react-native-web";
 import { theme } from "../../../../../../theme";
@@ -43,9 +42,7 @@ export default function BasketProducts() {
             timeout={300}
           >
             <div className="card-container">
-              {convertStringToBoolean(menuProduct.isPublicised) && (
-                <Sticker className="badge-new" />
-              )}
+              {menuProduct.isPublicised && <Sticker className="badge-new" />}
               {width > theme.breakpoints.screen.md ? (
                 <BasketCard
                   {...menuProduct}
@@ -58,7 +55,7 @@ export default function BasketProducts() {
                   onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                   className={"card"}
                   price={
-                    convertStringToBoolean(menuProduct.isAvailable)
+                    menuProduct.isAvailable
                       ? formatPrice(menuProduct.price)
                       : BASKET_MESSAGE.NOT_AVAILABLE
                   }
@@ -73,8 +70,9 @@ export default function BasketProducts() {
                   }
                   quantity={basketProduct.quantity}
                   onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                  className={"card"}
                   price={
-                    convertStringToBoolean(menuProduct.isAvailable)
+                    menuProduct.isAvailable
                       ? formatPrice(menuProduct.price)
                       : BASKET_MESSAGE.NOT_AVAILABLE
                   }
