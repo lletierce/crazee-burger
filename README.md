@@ -5,7 +5,7 @@
 🔗 **Démo en ligne : [crazee-burger](https://crazee-burger-seven.vercel.app/)**
 🛠️ **Back-office : [crazee-burger-dev-adm.web.app](https://crazee-burger-dev-adm.web.app/)**
 
-[Démo : connexion puis ajout de produits au panier](./docs/Cb-demo.gif)
+![Démo : connexion puis ajout de produits au panier](./docs/Cb-demo.gif)
 
 ---
 
