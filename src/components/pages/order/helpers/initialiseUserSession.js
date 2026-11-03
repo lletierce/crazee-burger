@@ -10,8 +10,8 @@ import { findObjectById } from "../../../../utils/array";
  qu’au rendu suivant. La fonction renvoie donc directement la valeur qu’elle a reçue, 
  c’est un piège classique de React
  */
-const intialiseMenu = async (username, setMenu) => {
-  const menuReceived = await getMenu(username);
+const intialiseMenu = async (setMenu) => {
+  const menuReceived = await getMenu();
   setMenu(menuReceived);
   return menuReceived;
 };
@@ -33,7 +33,7 @@ const intialiseBasket = (username, menu, setBasket) => {
 };
 
 export const initialiseUserSession = async (username, setMenu, setBasket) => {
-  const menu = await intialiseMenu(username, setMenu);
+  const menu = await intialiseMenu(setMenu);
   intialiseBasket(username, menu, setBasket);
 };
 
